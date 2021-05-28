@@ -1,0 +1,23 @@
+<%- include("header") -%>
+
+<div class="box" id="heading">
+    <h1> <%- kindOfDay %>
+    </h1>
+</div>
+<div class="box">
+    <% newListItems.forEach(function(element){%>
+    <form action="/status" method="POST">
+        <div class="item">
+            <input type="checkbox" name="checkbox" value="<%=element._id%>" onChange="this.form.submit()">
+            <p><%= element.name %></p>
+            <input type="hidden" name="listname" value="<%=nameOfList%>">
+        </div>
+    </form>
+    <% }); %>
+    <form class="item" action="/" method="POST">
+        <input type="text" placeholder="New Task" name="newItem" autocomplete="off"><br>
+        <button type="submit" name="submit" value ="<%=nameOfList%>">+</button>
+    </form>
+</div>
+
+<%- include("footer") -%>
