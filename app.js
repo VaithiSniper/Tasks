@@ -126,10 +126,13 @@ app.post("/status", function (req, res) {
    
 }) //POST request to handle checkbox status 
 
-app.listen(3000, function (req, res) {
-    console.log("Server started on port 3000");
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function (req, res) {
+    console.log("Server started");
 }); //Localhost setup
-
 
 //Handling different routes
 app.get("/:listname", function (req, res) {
